@@ -7,7 +7,6 @@
 
 
 
-
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -13980,7 +13979,8 @@ a.anchor-link {
 <h3 id="Introduction"><strong>Introduction</strong><a class="anchor-link" href="#Introduction">&#182;</a></h3><p>Paula McCree-Bailey</p>
 <p>Whether we like using credit or not, it has been a way for us to "buy now and pay later".  The use of credit began as early as the nineteenth century mainly for purchasing homes. In 1899 the first credit bureau named the Atlanta based Retail Credit Company was created to record credit transactions and other information on Americans.  By 1938 the Federal National Mortgage Association now called Fannie Mae created a network for mortgage borrowers, lenders, and investors to connect.</p>
 <p>The ability to determine an individual's or business's creditworthy is important.  Without this ability, a business could operate at a loss and eventually file for bankruptcy if many borrowers defaulted on loans. So, it is important that organizations can make accurate predictions on whether someone will default or not.</p>
-<p><a href="https://archive.ics.uci.edu/dataset/350/default+of+credit+card+clients">Default of Credit Card Clients</a></p>
+<p>Link to website and data: <a href="https://archive.ics.uci.edu/dataset/350/default+of+credit+card+clients">Default of Credit Card Clients</a></p>
+<p>Link to complete jupyter notebook:  <a href="https://colab.research.google.com/drive/1iWeRaiF8lgoQeI0VgwIdCwQM0H_RpX2i?usp=sharing">jupyter notebook</a></p>
 
 </div>
 </div>
@@ -14391,43 +14391,6 @@ Monthly past payment history from April to September 2005 (PAY_0 - PAY_6). It wa
 
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Credit_df</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[4]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>(30000, 25)</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
@@ -14439,43 +14402,6 @@ Monthly past payment history from April to September 2005 (PAY_0 - PAY_6). It wa
 <p>The final data set contains 29601 observsations with 37 features.</p>
 
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[28]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Credit_df</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[28]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>(29601, 37)</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
@@ -14824,7 +14750,7 @@ Monthly past payment history from April to September 2005 (PAY_0 - PAY_6). It wa
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="Modeling"><strong>Modeling</strong><a class="anchor-link" href="#Modeling">&#182;</a></h3><h4 id="Prep-for-Training-by-setting-features-and-target">Prep for Training by setting features and target<a class="anchor-link" href="#Prep-for-Training-by-setting-features-and-target">&#182;</a></h4><p>For all models except for random forest with downsized data, all features were used as the X or independent variables except for target and <code>default payment next month</code> was our Y or target variable.</p>
-<p>The training and testing datasets were split on 20%. This selects 23,601 observations into the training data and the remaining 5,921 into the testing data.</p>
+<p>The following models were selected: decision trees, random forest, downsampling with random forest, naive bayes, and logistic regression.  Since our dataset is unbalanced, we can not use k-NN (K Nearest Neighbors).</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -14872,22 +14798,12 @@ Monthly past payment history from April to September 2005 (PAY_0 - PAY_6). It wa
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h4 id="Split-into-Training-and-Test">Split into Training and Test<a class="anchor-link" href="#Split-into-Training-and-Test">&#182;</a></h4>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[31]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">21</span><span class="p">)</span>
-</pre></div>
-
-     </div>
 </div>
-</div>
-</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Used sklearn librbary to split the data into training and testing data sets.  The data was split on 20% which randomly selects 80% for the training data set and 20% for the testing data set.</p>
 
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
@@ -14928,23 +14844,52 @@ Monthly past payment history from April to September 2005 (PAY_0 - PAY_6). It wa
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="Model-1:-Decison-Trees"><strong>Model 1: Decison Trees</strong><a class="anchor-link" href="#Model-1:-Decison-Trees">&#182;</a></h4><p>Decision Trees tend to work well with unbalanced datasets.  This is the easiest to undersand.  There is no need for feature scaling and handles non-linear relationships. Since the trees are splitting based on the rules, they have the ability to take all classes into consideration.  Decision tree can be used for classification and regression problems.</p>
+<h4 id="Model-1:-Decison-Trees"><strong>Model 1: Decison Trees</strong><a class="anchor-link" href="#Model-1:-Decison-Trees">&#182;</a></h4><p>Decision Trees is a simple boolean decision rules to split each feature in the data and predict the outcome. These trees tend to work well with unbalanced datasets.  This spliting (partitioning) is continued until the optiminal criteria is met.  Decision tree can be used for classification and regression problems.</p>
+<p>This model was chosen because it was the first classification model I learned.  I expected and it performed poorly.</p>
+<p>pros:</p>
+<ul>
+<li>Easy to interpet and understand</li>
+<li>Handles missing values </li>
+<li>Handles non-linear </li>
+<li>Handles categorical values</li>
+</ul>
+<p>cons:</p>
+<ul>
+<li>prone to overfitting</li>
+<li>does not handle changes in data well</li>
+<li>does not handle unbalanced class</li>
+</ul>
 
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h4 id="Model-2:-Random-Trees"><strong>Model 2: Random Trees</strong><a class="anchor-link" href="#Model-2:-Random-Trees">&#182;</a></h4><p>Random forest is a good model because of its ability to reduce the risk of overfitting.</p>
-<p>The Random forest is a supervised learning algorithm.  It creates decision trees during the training step of the model.  Each new tree is created by randomly selecting observations and features from the dataset.  This random selection will introduce variability, improve prediction and reduce the risk of overfitting.</p>
-<p>In classification, each tree "votes" based on the class (1 or 0 for this project).  The forest composed of all of the trees "votes" and majority wins.  The idea is even if a few tree grow to produce errors, the entire forest will make a better decision.  The classification algorithm is available in regresssion and classification.</p>
+<p>The Random Forest is a supervised learning algorithm.  It creates decision trees during the training step of the model.  Each new tree is created by randomly selecting observations and features from the dataset.  This random selection will introduce variability, improve prediction and reduce the risk of overfitting.</p>
+<p>In classification, each tree "votes" based on the class (1 or 0 for this project).  The forest composed of all of the tree's "votes" and majority wins.  The idea is even if a few trees grow to produce errors, the entire forest will make a better decision.  The classification algorithm is available in regression and classification.</p>
+<p>pro:</p>
+<ul>
+<li>High accuracy</li>
+<li>Handles missing values and outlier</li>
+<li>Less prone to overfitting</li>
+<li>Works well with noise, outliers</li>
+<li>Works well with unbalanced data</li>
+<li>Handles numerical and categorical data</li>
+</ul>
+<p>cons:</p>
+<ul>
+<li>Can be difficult to interpret</li>
+<li>Can be prone to overfitting</li>
+<li>Computational complex and can take longer to make predictions</li>
+</ul>
 
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="Model-3:-Resampling-with-Random-Forest"><strong>Model 3: Resampling with Random Forest</strong><a class="anchor-link" href="#Model-3:-Resampling-with-Random-Forest">&#182;</a></h4><p>We noted above that our data is unbalanced.  About 78% of our observation did not default on the next month's payment, while 22% did default. Another way to address unbalanced data is to either undersample or oversample our dataset.  In undersampling, we need to remove obervations for the majority class until it equals the minority class.  In oversample, we will create random duplicates of the minority class to equal the majority class.</p>
-<p>Since it would be necessary to create over 10,000 observations (duplicate), run the risk of overfitting,and could possibly change the composition of the data,  we undersampled to see if we get better results.</p>
-<p>To ensure that we are pulling from the same training and testing set, we combined the training and testing datasets, created two series seperating the majority and minority classes and sampled from the majority class until the count equals the minority.  Both classes should have 6,636 observations, however, both ended up having 5,279 observations.  Honestly, I am not sure why that was the case but I will be looking into it further.</p>
+<h4 id="Model-3:-Downsampling-with-Random-Forest"><strong>Model 3: Downsampling with Random Forest</strong><a class="anchor-link" href="#Model-3:-Downsampling-with-Random-Forest">&#182;</a></h4><p>We noted above that our data is unbalanced.  About 78% of our observation did not default on the next month's payment, while 22% did default. Another way to address unbalanced data is to either undersample or oversample our dataset.  In undersampling, we need to remove observations for the majority class until it equals the minority class.  In oversample, we will create random duplicates of the minority class to equal the majority class.</p>
+<p>Since it would be necessary to create over 10,000 observations (duplicate), run the risk of overfitting, and could possibly change the composition of the data,  we undersampled to see if we get better results.</p>
+<p>To ensure that we are pulling from the same training and testing set, we combined the training and testing datasets, created two series separating the majority and minority classes and sampled from the majority class until the count equals the minority.  Both classes should have 6,636 observations, however, both ended up having 5,279 observations.  Honestly, I am not sure why that was the case but I will be looking into it further.</p>
 
 </div>
 </div>
@@ -14952,75 +14897,60 @@ Monthly past payment history from April to September 2005 (PAY_0 - PAY_6). It wa
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h4 id="Model-4:-Naive-Bayes">Model 4: Naive Bayes<a class="anchor-link" href="#Model-4:-Naive-Bayes">&#182;</a></h4><p>Naive Bayes uses a probabilistic machine learning algorithm.  It is "naive" because it assumes that all features are independent of each other.  It based on conditional probability and based on the works of Rev. Thomas Bayes.
 BernoulliNB classifier is suitable for discrete data and is designed for binary/boolean features.</p>
+<p>pros:</p>
+<ul>
+<li>Good performance with high dimensional data</li>
+<li>Not sensitive to irrelevant features</li>
+<li>Scalable</li>
+</ul>
+<p>cons:</p>
+<ul>
+<li>Conditional independence assumption does not always stay true.</li>
+<li>Zero probability problem </li>
+</ul>
 
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h4 id="Modeling-5:-Logistic-Regression"><strong>Modeling 5: Logistic Regression</strong><a class="anchor-link" href="#Modeling-5:-Logistic-Regression">&#182;</a></h4><p>Logistic regression is regression model (not a classifier) that predicts the value of a target variable through a linear combination of features. The value is bounded between 0 and 1.  It is the probability of success divided by the probability of failures known as log odds.  For a binary classification, a probability less than .5 will predict 0.  A probability greater than .5 will predict 1.</p>
+<p>pros:</p>
+<ul>
+<li>Feature scaling not needed</li>
+<li>Hyperparameters tuning not needed</li>
+</ul>
+<p>cons:</p>
+<ul>
+<li>poor performance on non-linear data</li>
+<li>poor performance on with irrelevant features</li>
+</ul>
 
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Model-Evaluation">Model Evaluation<a class="anchor-link" href="#Model-Evaluation">&#182;</a></h2><p>For this project, we used Decision trees, Random Forest, and Random Forest with downsizing, and Naivee Bayes using Bernoulli, and logistic regression.</p>
+<h2 id="Model-Evaluation">Model Evaluation<a class="anchor-link" href="#Model-Evaluation">&#182;</a></h2><p>For this project, we used Decision trees, Random Forest, and Random Forest with downsizing, and Naive Bayes using Bernoulli, and logistic regression.</p>
 <p>Based on the accuracy, basic Random Forest, Logistic regression and Naive bayes performed the best with approximately 81%.</p>
-<p>since the data was unbalanced, we need to look at other metrics - precision, recall,or F1 score.  The best option for imbalanced data is using the F1 score</p>
+<p>Since the data was unbalanced, we need to look at other metrics - precision, recall, or F1 score.</p>
 <p>Precision is the number of correctly labeled features divided by the total number of features.</p>
 <p>Recall is the number of correctly labeled featured divided by the number of features that should have been created.</p>
-<p>F1 score is the weighted average of precision and recall."Accuracy in making positive predictions is measured by a recall, while identifying all positive occurrences in the data is quantified by precision. The F-score ranges from 0 to 1, with higher values indicating better performance."</p>
+<p>F1 score is the weighted average of precision and recall. "Accuracy in making positive predictions is measured by a recall, while identifying all positive occurrences in the data is quantified by precision. The F-score ranges from 0 to 1, with higher values indicating better performance."</p>
+<p>The best option for imbalanced data is using the F1 score which allows us to look at the best of both worlds - precision and recall.  The scores are:</p>
+<ul>
+<li>Decision Trees                40.3%</li>
+<li>Random Forest                 46.3%</li>
+<li>Random Forest (downsampling)  68.4%</li>
+<li>Naive Bayes                   49.0%</li>
+<li>Logistic Regression           37.1%</li>
+</ul>
+<p>The downsampling Random Forest scored the best.  It was able to predict almost 69% which is better than a random guess, but it has room for improvement.  Then working with the entire dataset, the results were similar with Naive Bayes performing at 49.0%.  Again, this is worst then guessing.</p>
 
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[63]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Decision Trees</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">precision_recall_fscore_support</span>
-
-<span class="n">precision</span><span class="p">,</span> <span class="n">recall</span><span class="p">,</span> <span class="n">f1_score</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">precision_recall_fscore_support</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predicted</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
-
-<span class="n">Ac1</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Results for Decision Trees&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Accuracy: </span><span class="si">{</span><span class="n">Ac1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Precision: </span><span class="si">{</span><span class="n">precision</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Recall: </span><span class="si">{</span><span class="n">recall</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;F1 Score: </span><span class="si">{</span><span class="n">f1_score</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-
-     </div>
 </div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h5 id="Decision-Trees">Decision Trees<a class="anchor-link" href="#Decision-Trees">&#182;</a></h5>
 </div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Results for Decision Trees
-Accuracy: 0.7258908968079716
-Precision: 0.3972403776325345
-Recall: 0.4082089552238806
-F1 Score: 0.40264998159735
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
@@ -15067,6 +14997,11 @@ weighted avg       0.73      0.73      0.73      5921
 
 </div>
 
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h5 id="Random-Forest">Random Forest<a class="anchor-link" href="#Random-Forest">&#182;</a></h5>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
@@ -15115,6 +15050,11 @@ F1 Score: 0.46138902379796015
 
 </div>
 
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h5 id="Downsized-Random-Forest">Downsized Random Forest<a class="anchor-link" href="#Downsized-Random-Forest">&#182;</a></h5>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
@@ -15163,54 +15103,11 @@ F1 Score: 0.6842907981698018
 
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[67]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Naive Bayes</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">precision_recall_fscore_support</span>
-
-<span class="n">precision</span><span class="p">,</span> <span class="n">recall</span><span class="p">,</span> <span class="n">f1_score</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">precision_recall_fscore_support</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred5</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Results for Naive Bayes &quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Accuracy: </span><span class="si">{</span><span class="n">accuracy</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Precision: </span><span class="si">{</span><span class="n">precision</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Recall: </span><span class="si">{</span><span class="n">recall</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;F1 Score: </span><span class="si">{</span><span class="n">f1_score</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-
-     </div>
 </div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h5 id="Naive-Bayes">Naive Bayes<a class="anchor-link" href="#Naive-Bayes">&#182;</a></h5>
 </div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Results for Naive Bayes 
-Accuracy: 0.8127005573382875
-Precision: 0.512214983713355
-Recall: 0.46940298507462686
-F1 Score: 0.4898753894080997
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
@@ -15257,54 +15154,11 @@ weighted avg       0.77      0.78      0.78      5921
 
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[69]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Logistic Regression</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">precision_recall_fscore_support</span>
-
-<span class="n">precision</span><span class="p">,</span> <span class="n">recall</span><span class="p">,</span> <span class="n">f1_score</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">precision_recall_fscore_support</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred6</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Results for Naive Bayes &quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Accuracy: </span><span class="si">{</span><span class="n">accuracy</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Precision: </span><span class="si">{</span><span class="n">precision</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Recall: </span><span class="si">{</span><span class="n">recall</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;F1 Score: </span><span class="si">{</span><span class="n">f1_score</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-
-     </div>
 </div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h5 id="Logistic-Regression">Logistic Regression<a class="anchor-link" href="#Logistic-Regression">&#182;</a></h5>
 </div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Results for Naive Bayes 
-Accuracy: 0.8127005573382875
-Precision: 0.7219827586206896
-Recall: 0.25
-F1 Score: 0.3713968957871397
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
@@ -15354,8 +15208,10 @@ weighted avg       0.79      0.81      0.77      5921
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion">&#182;</a></h3><p>Summarize the project.</p>
-<p>"Discuss the possible impact of your project. This can be socially, ethically, etc. It cannot be something like "our project has no impact" or "our project has no negative impact." Even the most well-intentioned projects could have a negative impact. We will not be checking for "right" or "wrong" answers, but showing your critical thinking."</p>
+<h3 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion">&#182;</a></h3><p>The desired impact from this project was to successfully create a model that would predict if an individual would default on the next month's payment or not.  Based on the analysis, using downsizing on random forest performed the best.</p>
+<p>A business’s ability to predict creditworthiness can save them time and money.  On the other side, these models could cause a problem for the individual consumer.  The algorithm is using a small window of time to decide if a person is creditworthy.  It does not take into consideration other details that could impact one's ability to pay.  For example, a person has years of great repayment, and he/she becomes sick, missed payments for two months, but now their repayment schedule is back to normal.  The algorithm would likely consider them a risk.  Many models are based on history and it's possible that situations could change.</p>
+<p>Based on the results, these models were not the best for this project.  I plan to revisit this project and use more complex models until I can create an adequate model.  In addition, I plan to learn better techniques to help me  with these types of datasets. I tried to use SVM which ran for over an hour without producing a result, so I stopped it.</p>
+<p>Honestly, 30,000 observations don’t come close to 'big data'.</p>
 
 </div>
 </div>
